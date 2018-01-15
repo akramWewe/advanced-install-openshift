@@ -33,7 +33,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.hostmanager.ignore_private_ip = false
 
   config.landrush.enabled = true
-  config.landrush.tld = 'mousquetaires.com'
+  config.landrush.tld = 'wescale.fr'
   config.landrush.guest_redirect_dns = false 
 
   config.vm.provider "virtualbox" do |v|
@@ -44,7 +44,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define :admin do |admin|
     admin.vm.box = centos_box_name
     admin.vm.network :private_network, ip: "#{NETWORK_BASE}.#{INTEGRATION_START_SEGMENT + 3}"
-    admin.vm.hostname = "paas-admin.mousquetaires.com"
+    admin.vm.hostname = "paas-admin.wescale.fr"
     admin.vm.provision "shell", inline: "sudo yum -y install atomic-openshift-utils"
     admin.vm.provision "shell", inline: "sudo cp -f /vagrant/etc_ansible_hosts /etc/ansible/hosts"
   end
@@ -53,7 +53,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     master.vm.box = centos_box_name
     #master.vm.box_url = centos_box_url
     master.vm.network :private_network, ip: "#{NETWORK_BASE}.#{INTEGRATION_START_SEGMENT}"
-    master.vm.hostname = "paas.mousquetaires.com"
+    master.vm.hostname = "paas.wescale.fr"
     master.vm.provision "shell", inline: "sudo yum -y install centos-release-openshift-origin37"
   end
 
@@ -61,7 +61,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     node.vm.box = centos_box_name
     #node.vm.box_url = centos_box_url
     node.vm.network :private_network, ip: "#{NETWORK_BASE}.#{INTEGRATION_START_SEGMENT + 1}"
-    node.vm.hostname = "paas-node-infra.mousquetaires.com"
+    node.vm.hostname = "paas-node-infra.wescale.fr"
     node.vm.provision "shell", inline: "sudo yum -y install centos-release-openshift-origin37"
 
   end
@@ -70,7 +70,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     node.vm.box = centos_box_name
     #node.vm.box_url = centos_box_url
     node.vm.network :private_network, ip: "#{NETWORK_BASE}.#{INTEGRATION_START_SEGMENT + 2}"
-    node.vm.hostname = "paas-node-app.mousquetaires.com"
+    node.vm.hostname = "paas-node-app.wescale.fr"
     node.vm.provision "shell", inline: "sudo yum -y install centos-release-openshift-origin37"
 
   end
