@@ -41,14 +41,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
      v.cpus = 1
   end
 
-  config.vm.define :admin do |admin|
-    admin.vm.box = centos_box_name
-    admin.vm.network :private_network, ip: "#{NETWORK_BASE}.#{INTEGRATION_START_SEGMENT + 3}"
-    admin.vm.hostname = "paas-admin.wescale.fr"
-    admin.vm.provision "shell", inline: "sudo yum -y install atomic-openshift-utils"
-    admin.vm.provision "shell", inline: "sudo cp -f /vagrant/etc_ansible_hosts /etc/ansible/hosts"
-  end
-
   config.vm.define :master do |master|
     master.vm.box = centos_box_name
     #master.vm.box_url = centos_box_url
@@ -63,7 +55,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     node.vm.network :private_network, ip: "#{NETWORK_BASE}.#{INTEGRATION_START_SEGMENT + 1}"
     node.vm.hostname = "paas-node-infra.wescale.fr"
     node.vm.provision "shell", inline: "sudo yum -y install centos-release-openshift-origin37"
-
   end
  
   config.vm.define :node2 do |node|
@@ -72,7 +63,20 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     node.vm.network :private_network, ip: "#{NETWORK_BASE}.#{INTEGRATION_START_SEGMENT + 2}"
     node.vm.hostname = "paas-node-app.wescale.fr"
     node.vm.provision "shell", inline: "sudo yum -y install centos-release-openshift-origin37"
+  end
 
+  config.vm.define :admin do |admin|
+    admin.vm.box = centos_box_name
+    admin.vm.network :private_network, ip: "#{NETWORK_BASE}.#{INTEGRATION_START_SEGMENT + 3}"
+    admin.vm.hostname = "paas-admin.wescale.fr"
+    admin.vm.provision "shell", inline: "sudo yum -y install atomic-openshift-utils"
+    admin.vm.provision "shell", inline: "sudo cp -f /vagrant/etc_ansible_hosts /etc/ansible/hosts"
+  end
+
+  config.vm.define :nfs do |nfshost|
+    nfshost.vm.box = centos_box_name
+    nfshost.vm.network :private_network, ip: "#{NETWORK_BASE}.#{INTEGRATION_START_SEGMENT + 4}"
+    nfshost.vm.hostname = "paas-nfs.wescale.fr"
   end
 
 config.vm.provision "shell", inline: $miscellany
