@@ -42,7 +42,7 @@ openshift_hosted_registry_storage_volume_size=2Gi
 
 #Configuration du node
 # Commenting out 'pods-per-core' variable. Getting error while this value is in place:
-openshift_node_kubelet_args={'max-pods': [’40’], 'image-gc-high-threshold': ['90'], 'image-gc-low-threshold': ['80']}
+#openshift_node_kubelet_args={'max-pods': [’40’], 'image-gc-high-threshold': ['90'], 'image-gc-low-threshold': ['80']}
 
 
 [etcd]
