@@ -16,7 +16,7 @@ openshift_disable_check=memory_availability,disk_availability,docker_storage,doc
 
 
 # uncomment the following to enable htpasswd authentication; defaults to DenyAllPasswordIdentityProvider
-#openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider', 'filename': '/etc/origin/master/htpasswd'}]
+openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider', 'filename': '/etc/origin/master/htpasswd'}]
 
 #Ansible s'occupera de l'installation docker
 docker_version='1.12.6'
@@ -24,39 +24,39 @@ docker_version='1.12.6'
 #Configure the multi-tenant SDN plugin (default is 'redhat/openshift-ovs-subnet'
 os_sdn_network_plugin_name='redhat/openshift-ovs-multitenant'
 openshift_master_cluster_method=native
-openshift_master_cluster_hostname=paas.mousquetaires.com
-openshift_master_cluster_public_hostname=paas.mousquetaires.com
+openshift_master_cluster_hostname=paas.wescale.fr
+openshift_master_cluster_public_hostname=paas.wescale.fr
 
-openshift_master_default_subdomain=apps.example.com
-
-openshift_master_public_console_url=https://paas.mousquetaires.com:8443/console
-openshift_master_default_subdomain=apps.mousquetaires.com
+openshift_master_default_subdomain=apps.wescale.fr
+openshift_master_public_console_url=https://paas.wescale.fr.com:8443/console
 
 osm_default_node_selector='region=infra'
 openshift_hosted_registry_selector='region=infra'
 openshift_hosted_registry_replicas=1
 openshift_hosted_registry_storage_kind=nfs
 openshift_hosted_registry_storage_access_modes=['ReadWriteMany']
-openshift_hosted_registry_storage_host=paas.mousquetaires.com
-openshift_hosted_registry_storage_nfs_directory=/srv/nfs
+openshift_hosted_registry_storage_host=nfs.wescale.fr
+openshift_hosted_registry_storage_nfs_directory=/exports/volumes/
 openshift_hosted_registry_storage_volume_name=registry
 openshift_hosted_registry_storage_volume_size=2Gi
 
 #Configuration du node
-openshift_node_kubelet_args={'pods-per-core': ['10'], 'max-pods': [’250’], 'image-gc-high-threshold': ['90'], 'image-gc-low-threshold': ['80']}
+# Commenting out 'pods-per-core' variable. Getting error while this value is in place:
+openshift_node_kubelet_args={'max-pods': [’40’], 'image-gc-high-threshold': ['90'], 'image-gc-low-threshold': ['80']}
+
 
 [etcd]
-paas.mousquetaires.com openshift_ip=192.168.50.20
-
-[nfs]
-paas.mousquetaires.com
+paas.wescale.fr openshift_ip=192.168.50.20
 
 # host group for masters
 [masters]
-paas.mousquetaires.com openshift_ip=192.168.50.20
+paas.wescale.fr openshift_ip=192.168.50.20
 
 # host group for nodes, includes region info
 [nodes]
-paas.mousquetaires.com openshift_node_labels="{'region': 'master', 'zone': 'east'}" openshift_ip=192.168.50.20
-paas-node-infra.mousquetaires.com openshift_node_labels="{'region': 'infra', 'zone': 'east'}" openshift_ip=192.168.50.21
-paas-node-app.mousquetaires.com openshift_node_labels="{'region': 'apps', 'zone': 'west'}" openshift_ip=192.168.50.22
+paas.wescale.fr openshift_node_labels="{'region': 'master', 'zone': 'east'}" openshift_ip=192.168.50.20
+paas-node-infra.wescale.fr openshift_node_labels="{'region': 'infra', 'zone': 'east'}" openshift_ip=192.168.50.21
+paas-node-app.wescale.fr openshift_node_labels="{'region': 'apps', 'zone': 'west'}" openshift_ip=192.168.50.22
+
+[nfs]
+nfs.wescale.fr openshift_ip=192.168.50.24
