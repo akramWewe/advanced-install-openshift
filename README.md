@@ -40,10 +40,10 @@ $ exportfs -rv
 In admin vm, you launch the install:
 
 $ vagrant ssh admin </br>
-$ su - ( password Redhat </br>
+$ su - (password Redhat) </br>
 $ cd /home/vagrant && git clone https://github.com/openshift/openshift-ansible </br>
 $ cd /home/vagrant/openshift-ansible && git checkout origin/release-3.7 </br>
-$ cd /home/vagrant/ && deploy.sh (password Redhat)
+$ cd /home/vagrant/ && ./deploy.sh (password Redhat)
 
 
 Verify the install:
@@ -51,12 +51,12 @@ Verify the install:
 
 In master vm:
 
-$ oc login -u system:admin --config=/etc/origin/master/admin.kubeconfig
-$ oc get nodes
+$ oc login -u system:admin --config=/etc/origin/master/admin.kubeconfig /br>
+$ oc get nodes /br>
 
 Add another cluster admin
 
-$ htpasswd -b htpasswd -b /etc/origin/master/htpasswd wescale wescale
+$ htpasswd -b htpasswd -b /etc/origin/master/htpasswd wescale wescale /br>
 $ oadm policy add-cluster-role-to-user cluster-admin Wescale
 
 
