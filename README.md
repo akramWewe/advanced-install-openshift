@@ -10,7 +10,7 @@ Install des plugins Vagrant vagrant-hostmanager & landrush
 
 Run
 
-$ vagrant landrush start
+$ vagrant landrush start </br>
 $ vagrant up
 
 ( .... wait about 10 minutes) and 5 VMs will provisioned: master, node infra, node app, admin, nfs
