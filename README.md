@@ -53,12 +53,12 @@ Verify the install:
 
 In master vm:
 
-$ oc login -u system:admin --config=/etc/origin/master/admin.kubeconfig /br>
-$ oc get nodes /br>
+$ oc login -u system:admin --config=/etc/origin/master/admin.kubeconfig </br>
+$ oc get nodes </br>
 
 Add another cluster admin
 
-$ htpasswd -b htpasswd -b /etc/origin/master/htpasswd wescale wescale /br>
+$ htpasswd -b htpasswd -b /etc/origin/master/htpasswd wescale wescale </br>
 $ oadm policy add-cluster-role-to-user cluster-admin Wescale
 
 
