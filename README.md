@@ -21,7 +21,8 @@ $ service nfs start</br>
 $ service rpcbind start</br>
 $ mkdir -p /exports/volumes/pv{1..10} && mkdir -p /exports/volumes/registry </br>
 $ chown nfsnobody:nfsnobody /exports/volumes </br>
-$ chown nfsnobody:nfsnobody /exports/volumes/pv{1..10} && chown nfsnobody:nfsnobody /exports/volumes/registry </br>
+$ chown nfsnobody:nfsnobody /exports/volumes/pv{1..10} </br>
+  && chown nfsnobody:nfsnobody /exports/volumes/registry </br>
 $ vim /etc/exports.d/openshift-WESCALE.exports </br>
 
 /exports/volumes/registry  *(rw,root_squash,no_wdelay) </br>
