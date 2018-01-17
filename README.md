@@ -15,7 +15,7 @@ $ vagrant up
 
 ( .... wait about 10 minutes) and 5 VMs will provisioned: master, node infra, node app, admin, nfs
 
-Configure NFS server:
+Configure NFS server: </br>
 $ vagrant ssh nfs</br>
 $ service nfs start</br>
 $ service rpcbind start</br>
