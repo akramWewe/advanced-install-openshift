@@ -40,12 +40,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
      v.memory = 1024
      v.cpus = 1
   end
-  
-  config.vm.define :nfs do |nfshost|
-    nfshost.vm.box = centos_box_name
-    nfshost.vm.network :private_network, ip: "#{NETWORK_BASE}.#{INTEGRATION_START_SEGMENT + 4}"
-    nfshost.vm.hostname = "nfs.wescale.fr"
-  end
+ 
+ # config.vm.define :nfs do |nfshost|
+ #   nfshost.vm.box = centos_box_name
+ #   nfshost.vm.network :private_network, ip: "#{NETWORK_BASE}.#{INTEGRATION_START_SEGMENT + 4}"
+ #   nfshost.hostmanager.aliases = %w(nfs.wescale.fr)
+ #   nfshost.vm.hostname = "nfs.wescale.fr"
+ # end
 
   config.vm.define :master do |master|
     master.vm.box = centos_box_name

@@ -1,6 +1,6 @@
 
 ssh-keygen -b 2048 -t rsa -f /root/.ssh/id_rsa -q -N ""
-for host in nfs.wescale.fr paas.wescale.fr paas-node-infra.wescale.fr paas-node-app.wescale.fr; \
+for host in paas.wescale.fr paas-node-infra.wescale.fr paas-node-app.wescale.fr; \
     do ssh-copy-id -i /root/.ssh/id_rsa.pub $host; \
     done
 
