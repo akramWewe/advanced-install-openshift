@@ -7,7 +7,7 @@ Install Vagrant & VirtualBox
 Install des plugins Vagrant vagrant-hostmanager & landrush
 
 
-<u>*Run*</u>
+<u>Run</u>
 
 $ vagrant landrush start </br>
 $ vagrant up
