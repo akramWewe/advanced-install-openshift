@@ -7,7 +7,7 @@ Install Vagrant & VirtualBox
 Install des plugins Vagrant vagrant-hostmanager & landrush
 
 
-Run
+<u>*Run*</u>
 
 $ vagrant landrush start </br>
 $ vagrant up
@@ -47,7 +47,7 @@ $ cd /home/vagrant/openshift-ansible && git checkout origin/release-3.7 </br>
 $ cd /home/vagrant/ && ./deploy.sh (password Redhat)
 
 
-Verify the install:
+<u>*Verify the install:*</u>
 
 
 In master vm:
@@ -55,7 +55,7 @@ In master vm:
 $ oc login -u system:admin --config=/etc/origin/master/admin.kubeconfig </br>
 $ oc get nodes </br>
 
-Add another cluster admin
+<u>*Add another cluster admin*</u>
 
 $ htpasswd -b htpasswd -b /etc/origin/master/htpasswd wescale wescale </br>
 $ oadm policy add-cluster-role-to-user cluster-admin Wescale
