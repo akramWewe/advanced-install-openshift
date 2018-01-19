@@ -1,7 +1,7 @@
 # advanced-install-openshift
 It's a Vagrant project to an advanced installation of OpenShift Origin with Ansible
 
-*Prerequisites:*
+<u>*Prerequisites:*</u>
 
 Install Vagrant & VirtualBox
 Install des plugins Vagrant vagrant-hostmanager & landrush
