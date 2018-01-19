@@ -10,18 +10,20 @@ Install des plugins Vagrant vagrant-hostmanager & landrush
 
 Run
 
-$ vagrant landrush start
+$ vagrant landrush start </br>
 $ vagrant up
 
 ( .... wait about 10 minutes) and 5 VMs will provisioned: master, node infra, node app, admin, nfs
 
 Configure NFS server:
+
 $ vagrant ssh nfs</br>
 $ service nfs start</br>
 $ service rpcbind start</br>
 $ mkdir -p /exports/volumes/pv{1..10} && mkdir -p /exports/volumes/registry </br>
 $ chown nfsnobody:nfsnobody /exports/volumes </br>
-$ chown nfsnobody:nfsnobody /exports/volumes/pv{1..10} && chown nfsnobody:nfsnobody /exports/volumes/registry </br>
+$ chown nfsnobody:nfsnobody /exports/volumes/pv{1..10} </br>
+  && chown nfsnobody:nfsnobody /exports/volumes/registry </br>
 $ vim /etc/exports.d/openshift-WESCALE.exports </br>
 
 /exports/volumes/registry  *(rw,root_squash,no_wdelay) </br>
@@ -40,10 +42,10 @@ $ exportfs -rv
 In admin vm, you launch the install:
 
 $ vagrant ssh admin </br>
-$ su - ( password Redhat </br>
+$ su - (password Redhat) </br>
 $ cd /home/vagrant && git clone https://github.com/openshift/openshift-ansible </br>
 $ cd /home/vagrant/openshift-ansible && git checkout origin/release-3.7 </br>
-$ cd /home/vagrant/ && deploy.sh (password Redhat)
+$ cd /home/vagrant/ && ./deploy.sh (password Redhat)
 
 
 Verify the install:
@@ -51,12 +53,12 @@ Verify the install:
 
 In master vm:
 
-$ oc login -u system:admin --config=/etc/origin/master/admin.kubeconfig
-$ oc get nodes
+$ oc login -u system:admin --config=/etc/origin/master/admin.kubeconfig </br>
+$ oc get nodes </br>
 
 Add another cluster admin
 
-$ htpasswd -b htpasswd -b /etc/origin/master/htpasswd wescale wescale
+$ htpasswd -b htpasswd -b /etc/origin/master/htpasswd wescale wescale </br>
 $ oadm policy add-cluster-role-to-user cluster-admin Wescale
 
 
