@@ -1,3 +1,4 @@
+
 # advanced-install-openshift
 It's a Vagrant project to an advanced installation of OpenShift Origin with Ansible
 
@@ -61,5 +62,7 @@ $ htpasswd -b htpasswd -b /etc/origin/master/htpasswd wescale wescale </br>
 $ oadm policy add-cluster-role-to-user cluster-admin Wescale
 
 
+
+http://blog.wescale.fr/2018/01/21/simuler-une-installation-dun-cluster-openshift-prod-ready-en-30-minutes/
 
 
