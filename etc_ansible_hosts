@@ -28,7 +28,7 @@ openshift_master_cluster_hostname=paas.wescale.fr
 openshift_master_cluster_public_hostname=paas.wescale.fr
 
 openshift_master_default_subdomain=apps.wescale.fr
-openshift_master_public_console_url=https://paas.wescale.fr.com:8443/console
+openshift_master_public_console_url=https://paas.wescale.fr:8443/console
 
 osm_default_node_selector='region=apps'
 openshift_hosted_registry_selector='region=infra'
