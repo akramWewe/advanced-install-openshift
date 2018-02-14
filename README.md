@@ -58,7 +58,7 @@ $ oc get nodes </br>
 
 <u>*Add another cluster admin*</u>
 
-$ htpasswd -b htpasswd -b /etc/origin/master/htpasswd wescale wescale </br>
+$ htpasswd -b /etc/origin/.htpasswd wescale wescale </br>
 $ oadm policy add-cluster-role-to-user cluster-admin Wescale
 
 
